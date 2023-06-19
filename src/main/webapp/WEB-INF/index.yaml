@@ -1,5 +1,30 @@
 indexes:
-- kind: Friend 
+
+- kind: Pétition 
   properties: 
-    - name: friends 
-    - name: age 
+    - name: Date 
+      direction: desc
+    - name: Signataires
+    - name: nbSignatures
+      direction: desc
+    - name: Propriétaire
+    - name: Body
+    - name: Nom
+    - name: Tags
+
+
+- kind: Pétition 
+  ancestor: false
+  properties: 
+    - name: nbSignatures 
+      direction: desc
+    - name: Date
+      direction: desc
+
+- kind: Pétition 
+  ancestor: false
+  properties: 
+    - name: Signataires
+    - name: Date 
+      direction: desc
+    
