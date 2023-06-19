@@ -1,0 +1,180 @@
+@font-face {
+    font-family: "Roboto";
+    src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+}
+
+body {
+    background: linear-gradient(to bottom right, #898980, #DEF2C8);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    font-size: large;
+    color: white;
+    background: #A9B2AC;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+  
+nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+  
+nav a:hover {
+    color: #ccc;
+}
+ 
+
+.petitionCase {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 50px; 
+    margin-bottom: 50px; 
+}
+  
+  .petitionCase p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .petitionCase_Nom {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .petitionCase_Info {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .petitionCase_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px; 
+  }
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto; 
+    max-width: 400px; 
+}
+  
+  label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  input[type=text] {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  button[type=submit] {
+    padding: 8px 16px;
+    background-color: #3366cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .petitionCase_nbSignatures {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3366cc;
+    margin-right: 10px;
+  }
+  
+  .petitionCase .sign {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #3366cc;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .petitionCase .sign:hover {
+    background-color: #195fbf;
+  }
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #a6bde9;
+    color: white;
+  }
+
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background: azure;
+    background: aliceblue;
+    display: flex;
+    margin: 5%;
+    padding: 10px;
+    border: 10px;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    place-content: space-around;
+}
+
+.footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    border-top: 1px solid #ccc;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  
+  .footer p:first-child {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .footer p:last-child {
+    color: #999;
+  }
