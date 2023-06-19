@@ -1,94 +1,66 @@
-# fast install
+# Projet Tiny Pet, module Développement d'applications sur le Cloud
 
-* precondition: you have a GCP project selected with billing activated. 
-* go to GCP console and open a cloud shell
-* git clone https://github.com/momo54/webandcloud.git
-* cd webandcloud
-* mvn appengine:deploy (to deploy)
-* mvn appengine:run (to debug in dev server)
+## Réalisé par Florian Lassalle
 
-# webandcloud from the lab
+J'ai réalisé cette application en solo, je vous prie donc de m'excuser si elle est moins aboutie que celle réalisée par les autres groupes.
+<hr>
 
-**Be sure your maven has access to the web**
-* you should have file ~/.m2/settings.xml
-* otherwise cp ~molli-p/.m2/settings.xml ~/.m2/
+URL de l'application :
+https://tinypet-389612.ew.r.appspot.com/
 
-```
-molli-p@remote:~/.m2$ cat settings.xml
-<settings>
- <proxies>
- <proxy>
-      <active>true</active>
-      <protocol>https</protocol>
-      <host>proxy.ensinfo.sciences.univ-nantes.prive</host>
-      <port>3128</port>
-    </proxy>
-  </proxies>
-</settings>
-```
+URL du GITHUB :
+https://github.com/CuckSquidGame/TinyPet
 
-## import and run in eclipse
-* install the code in your home:
-```
- cd ~
- git clone https://github.com/momo54/webandcloud.git
- cd webandcloud
- mvn install
-```
-* Change "sobike44" with your google project ID in pom.xml
-* Change "sobike44" with your google project ID in src/main/webapp/WEB-INF/appengine-web.xml
+Note :
+L'application met parfois du temps à se mettre à jour visuellement
 
-## Run in eclipse
+(exemples : 
+- la page d'accueil peut mettre quelques secondes à charger
+- une fois une pétition signée, elle peut mettre quelques secondes avant d'apparaître dans "mes pétitions")
 
-* start an eclipse with gcloud plugin
-```
- /media/Enseignant/eclipse/eclipse
- or ~molli-p/eclipse/eclipse
- ```
-* import the maven project in eclipse
- * File/import/maven/existing maven project
- * browse to ~/webandcloud
- * select pom.xml
- * Finish and wait
- * Ready to deploy and run...
- ```
- gcloud app create error...
- ```
- Go to google cloud shell console (icon near your head in google console)
- ```
- gcloud app create
- ```
+Dans le doute, ne pas hésiter à mettre un coup de CTRL + F5
+
+Les fonctionnalités implémentées :
+- Un servlet pour peupler le datastore avec des pétitions (en cliquant sur "Populate the table Petition")
+- L'affichage des 100 pétitions les plus signées, triées ensuite par date
+- La création d'une pétition (en saisissant son nom, son contenu, et ses tags (important de les saisir séparés par des virgules et sans espace). L'email de l'utilisateur et son nom sont récupérés immédiatement pour être stockés respectivement parmi ses signataires et comme propriétaire)
+- Possibilité de signer une pétition (on ne peut signer une pétition qu'une fois)
+- Rechercher les pétitions signées par un utilisateur
+- Rechercher les pétitions par leur nom
+- Rechercher les pétitions par leur tags
+- Une page "Mes pétitions" contenant les pétitions signées par l'utilisateur connecté (donc aussi logiquement celles qu'il a créées)
+- La connexion via compte Google
+
+## Les index utilisés :
+
+``` 
+indexes:
+
+- kind: Pétition 
+  properties: 
+    - name: Date 
+      direction: desc
+    - name: Signataires
+    - name: nbSignatures
+      direction: desc
+    - name: Propriétaire
+    - name: Body
+    - name: Nom
+    - name: Tags
 
 
-## Install and Run 
-* (gcloud SDK must be installed first. see https://cloud.google.com/sdk/install)
- * the gcloud command should be in your path. Run the following command to initialize your local install of gcloud.
-```
-gcloud init
-```
-* git clone https://github.com/momo54/webandcloud.git
-* cd webandcloud
-* running local (http://localhost:8080):
-```
-mvn package
-mvn appengine:run
-```
-* Deploying at Google (need gcloud configuration, see error message -> tell you what to do... 
-)
-```
-mvn appengine:deploy
-gcloud app browse
-```
+- kind: Pétition 
+  ancestor: false
+  properties: 
+    - name: nbSignatures 
+      direction: desc
+    - name: Date
+      direction: desc
 
-# Access REST API
-* (worked before) 
-```
-https://<yourapp>.appstpot.com/_ah/api/explorer
-```
-* New version of endpoints (see https://cloud.google.com/endpoints/docs/frameworks/java/adding-api-management?hl=fr):
-```
-mvn clean package
-mvn endpoints-framework:openApiDocs
-gcloud endpoints services deploy target/openapi-docs/openapi.json 
-mvn appengine:deploy
+- kind: Pétition 
+  ancestor: false
+  properties: 
+    - name: Signataires
+    - name: Date 
+      direction: desc
 ```
